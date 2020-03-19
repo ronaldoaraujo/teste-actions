@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "tf-state-agrosmart"
-    key    = "aws/infrastructure"
+    key    = "aws/infrastructure.tfstate"
     region = "us-east-1"
   }
 }
