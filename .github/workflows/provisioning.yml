@@ -1,0 +1,17 @@
+name: Terraform provisioning
+on:
+  push:
+    branches:
+      - master
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: kciter/terraform-apply-for-aws-action@v3
+      with:
+        access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        region: us-east-1
+        variables: var=${{ github.sha }}
+        path: aws
